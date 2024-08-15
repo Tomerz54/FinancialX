@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Verification</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .container {
+        background-color: white;
+        padding: 20px 40px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+    
+    h2 {
+        margin-bottom: 10px;
+        font-size: 24px;
+        color: #333;
+    }
+    
+    p {
+        margin-bottom: 20px;
+        color: #777;
+    }
+    
+    .otp-inputs {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+    
+    .otp-input {
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        font-size: 24px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .btn-submit {
+        padding: 10px 30px;
+        font-size: 18px;
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    .btn-submit:hover {
+        background-color: #06407e;
+    }
+    
+    .error-message {
+        color: red;
+        margin-top: 15px;
+    }
+    
+    .footer {
+        margin-top: 20px;
+        font-size: 14px;
+        color: #555;
+    }
+    
+    .footer a {
+        color: #007BFF;
+        text-decoration: none;
+    }
+    
+    .footer a:hover {
+        text-decoration: underline;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Verify Your Email</h2>
+        <p>Please enter the OTP sent to your email to verify your account.</p>
+        <form action="/verify-otp" method="POST">
+            <!-- CSRF Token -->
+            
+
+            <div class="otp-inputs">
+                <input type="text" name="otp1" class="otp-input" maxlength="1" required>
+                <input type="text" name="otp2" class="otp-input" maxlength="1" required>
+                <input type="text" name="otp3" class="otp-input" maxlength="1" required>
+                <input type="text" name="otp4" class="otp-input" maxlength="1" required>
+            </div>
+            <button type="submit" class="btn-submit">Verify</button>
+        </form>
+        <% if (typeof errorMessage !== 'undefined' && errorMessage) { %>
+            <div class="error-message"><%= errorMessage %></div>
+        <% } %>
+        <div class="footer">
+            <p>If you did not receive the OTP, <a href="#">resend it</a>.</p>
+        </div>
+    </div>
+</body>
+</html>

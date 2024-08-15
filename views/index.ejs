@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinancialX</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="signin-container">
+        <h2>Sign In</h2>
+        <form id="signin-form" action="/main" method="post">
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email" required placeholder="bob@gmail.com">
+ 
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required placeholder="bobthegoat">
+            <span class="toggle-password" onclick="togglePassword()">Show Password</span>
+            
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required placeholder="Micheal">
+            
+            <button type="submit">Sign In</button>
+            
+            
+            <!-- Password strength bar -->
+            <div id="password-strength">
+                <p>Password Strength:</p>
+                <div id="strength-bar">
+                    <div id="strength-meter"></div>
+                </div>
+                <p id="strength-text">Very Weak</p>
+            </div>
+
+            <!-- Validation error messages -->
+            <div id="password-errors" class="error-message"></div>
+            <div id="password-requirements">
+                <label><input type="checkbox" id="min-length" disabled> Minimum 8 characters</label>
+                <label><input type="checkbox" id="uppercase" disabled> At least one uppercase letter</label>
+                <label><input type="checkbox" id="lowercase" disabled> At least one lowercase letter</label>
+                <label><input type="checkbox" id="number" disabled> At least one number</label>
+                <label><input type="checkbox" id="no-special" disabled> No special characters '<', '>', '/'</label>
+        </div>
+        </form>
+        <div class="links">
+            <a href="/login">Already have an account? Login here</a>
+        </div>
+    </div>
+    <script src="/app.js"></script>
+</body>
+</html>

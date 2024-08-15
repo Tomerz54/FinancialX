@@ -1,0 +1,321 @@
+/* Global Styles */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('/wallpaper-images/financial-management.jpg'); /* Replace with your background image URL */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.overlay {
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1; /* Ensures the div overlays the background */
+}
+
+.signin-container, .login-container {
+    width: 500px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2; /* Ensures the content is above the overlay */
+}
+
+.signin-container h2, .login-container h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.signin-container label, .login-container label {
+    display: block;
+    margin-bottom: 5px;
+    width: 100%;
+    text-align: left;
+}
+
+.signin-container input, .login-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.signin-container button, .login-container button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.signin-container button:hover, .login-container button:hover {
+    background-color: #0056b3;
+}
+
+#message {
+    text-align: center;
+    color: red;
+    margin-top: 10px;
+}
+
+#signin_text, #login_text {
+    padding: 10px;
+    color: inherit;
+    text-decoration: none;
+}
+
+#signin-text:hover, #login-text:hover {
+    color: #7b838b; /* Optional: Change color on hover */
+}
+
+.links {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.links a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.links a:hover {
+    text-decoration: underline;
+}
+
+.bottom-text {
+    padding-right: 30px;
+    padding-left: 30px;
+    color: grey;
+    font-size: 12px;
+    text-align: center;
+}
+
+/* Main Page Styles */
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.hero {
+    background-color: #0056b3;
+    color: white;
+    padding: 50px 20px;
+    text-align: center; /* Center-align text in hero section */
+}
+
+.hero h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.hero button {
+    background-color: white;
+    color: #007bff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.hero button:hover {
+    background-color: #e0e0e0;
+}
+
+.greeting, .overview, .transactions, .services, .news {
+    padding: 20px;
+}
+
+.overview h2, .transactions h2, .services h2, .news h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.summary-widgets {
+    display: flex;
+    justify-content: space-around;
+}
+
+.widget, .service, .news article {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.widget {
+    width: 45%;
+}
+
+.transactions table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.transactions th, .transactions td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.transactions th {
+    background-color: #f4f4f9;
+    text-align: left;
+}
+
+footer {
+    background-color: #007bff;
+    color: white;
+    padding: 20px;
+}
+
+footer ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+footer ul li {
+    margin: 0 10px;
+}
+
+footer ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+footer p {
+    margin: 10px 0 0;
+}
+
+/* Toggle Password Styling */
+.toggle-password {
+    cursor: pointer; /* Change cursor to pointer */
+    text-decoration: underline;
+    color: #007BFF; /* Blue color for the toggle */
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.toggle-password:hover {
+    color: #0056b3; /* Darker blue on hover */
+}
+
+/* Error Message Styling */
+.error-message {
+    color: #d73f40; /* Red color for errors */
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+/* Password Strength Section */
+#password-strength {
+    margin-top: 20px;
+}
+
+/* Strength Bar Container */
+#strength-bar {
+    width: 100%;
+    height: 10px;
+    background-color: #ddd; /* Light gray background */
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 5px;
+    position: relative; /* For positioning inner elements */
+}
+
+/* Dynamic Strength Meter */
+#strength-meter {
+    height: 100%;
+    width: 0; /* Start with 0 width */
+    background-color: transparent; /* Will be updated dynamically */
+    transition: width 0.5s ease, background-color 0.5s ease; /* Smooth transition */
+    position: absolute; /* To ensure it stays within the strength-bar */
+    top: 0;
+    left: 0;
+}
+
+/* Strength Text */
+#strength-text {
+    margin-top: 5px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #333; /* Dark text color for readability */
+}
+
+/* Password Requirements Section */
+#password-requirements {
+    margin-top: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .signin-container, .login-container {
+        width: 90%; /* Adjust width for smaller screens */
+    }
+
+    .summary-widgets {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .widget {
+        width: 80%; /* Adjust widget width for smaller screens */
+    }
+    /*otp verifciation page css*/
+    
+}

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinancialX</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+        }
+
+        .sidebar {
+            width: 150px;
+            height: 100vh;
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            padding: 15px 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+        }
+
+        .logo {
+            font-size: 28px;
+            text-decoration: none;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            margin-bottom: 30px;
+        }
+
+        .logo:hover {
+            color: rgb(39, 47, 155);
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-bottom: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #3754a5;
+        }
+
+        .main-content {
+            margin-left: 200px; /* Adjusted for sidebar */
+            padding: 30px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            margin-bottom: 30px;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero p {
+            font-size: 22px;
+            margin-bottom: 30px;
+        }
+
+        .hero button {
+            background-color: white;
+            color: #007bff;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            margin: 10px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .hero button:hover {
+            background-color: #0056b3;
+            color: white;
+        }
+
+        .greeting {
+            margin-bottom: 30px;
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        .overview, .transactions, .services, .news, .expenses, .income {
+            margin-bottom: 30px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .overview h2, .transactions h2, .services h2, .news h2, .expenses h2, .income h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+
+        .summary-widgets {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .widget {
+            background-color: #007bff;
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            flex: 1 1 calc(50% - 20px);
+            margin: 10px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .transactions table, .expenses table, .income table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 16px;
+        }
+
+        .transactions th, .transactions td, .expenses th, .expenses td, .income th, .income td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .transactions th, .expenses th, .income th {
+            background-color: #f4f4f9;
+            font-weight: bold;
+        }
+
+        
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .add-button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .add-button:hover {
+            background-color: #0056b3;
+        }
+
+        .list-item {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo" onclick="scrollToTop()">FinancialX</div>
+        <nav>
+            <ul>
+                <li><a href="/main">Home</a></li>
+                <li><a href="/services">Services</a></li>
+                <li><a href="/login">Login</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Welcome to FinancialX</h1>
+            <p>Your one-stop solution for financial management</p>
+            <button>Get Started</button>
+            <button>Learn More</button>
+        </section>
+
+        <!-- User Greeting -->
+        <h1>Hello, <%= name %>!</h1>
+
+        <!-- Financial Overview -->
+        <section class="overview">
+            <h2>Financial Overview</h2>
+            <div class="summary-widgets">
+                <div class="widget">Account Balance: $10,000</div>
+                <div class="widget">Total Investments: $5,000</div>
+            </div>
+        </section>
+
+        <!-- Recent Transactions -->
+        <section class="transactions">
+            <h2>Recent Transactions</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>01/01/2024</td>
+                        <td>Groceries</td>
+                        <td>$100</td>
+                    </tr>
+                    <!-- More transactions... -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services">
+            <h2>Buisness opprtunities</h2>
+            <div class="service">
+                <h3>Service 1</h3>
+                <p>Description of service 1...</p>
+            </div>
+            <!-- More services... -->
+        </section>
+
+        <!-- News Section -->
+        
+
+        <!-- Expense Tracking Section -->
+        <section class="expenses">
+            <div class="section-header">
+                <h2>Expenses</h2>
+                <button class="add-button" id="addExpenseButton">Add Expense</button>
+            </div>
+            <div class="list-item">
+                <span>01/02/2024 - Rent</span>
+                <span>$1,200</span>
+            </div>
+            <!-- More expenses -->
+        </section>
+
+        <!-- Income Tracking Section -->
+        <section class="income">
+            <div class="section-header">
+                <h2>Income</h2>
+                <button class="add-button" id="addIncomeButton">Add Income</button>
+            </div>
+            <div class="list-item">
+                <span>01/03/2024 - Salary</span>
+                <span>$3,000</span>
+            </div>
+        </section>
+    </div>
+
+    
+</body>
+<script>
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    document.addEventListener('DOMContentLoaded', (event) => {
+            // Get the buttons by their IDs
+            const addExpenseButton = document.getElementById('addExpenseButton');
+            const addIncomeButton = document.getElementById('addIncomeButton');
+
+            // Add click event listeners to the buttons
+            addExpenseButton.addEventListener('click', () => {
+                window.location.href = '/add-expenses';
+            });
+
+            addIncomeButton.addEventListener('click', () => {
+                window.location.href = '/add-income';
+            });
+        });
+</script>
+</html>
