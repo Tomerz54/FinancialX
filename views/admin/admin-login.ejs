@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinancialX</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Log In (Admin)</h2>
+        <form id="login-form" action="/admin/admin-login" method="post">
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email" required placeholder="user@gmail.com">
+            
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required placeholder="password123">
+            <span class="toggle-password" onclick="togglePassword()">Show Password</span>
+
+            <button type="submit">Log In</button>
+
+            <!-- Validation error messages -->
+            <div id="password-strength">
+                <p>Password Strength:</p>
+                <div id="strength-bar">
+                    <div id="strength-meter"></div>
+                </div>
+                <p id="strength-text">Very Weak</p>
+            </div>
+
+            <!-- Error message display -->
+            <% if (typeof error !== 'undefined') { %>
+                <div class="error-message"><%= error %></div>
+            <% } %>
+
+            <div class="links">
+                <a id="forgot-password" href="/forgot-password">Forgot Password?</a>
+                <br>
+                <a href="/">Don’t Have an Account? Sign Up</a>
+                <br>
+            </div>
+        </form>
+    </div>
+    <script src="/app.js"></script>
+</body>
+</html>

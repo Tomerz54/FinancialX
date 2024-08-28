@@ -62,19 +62,20 @@
 <body>
     <div class="container">
         <h2>Add Income</h2>
-        <form action="/main" method="post">
-            
-            <label for="incomeDate">Date:</label>
-            <input type="date" id="incomeDate" name="incomeDate" required >
-            <label for="incomeDescription">Description:</label>
-            <input type="text" id="incomeDescription" name="incomeDescription" required placeholder="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni eius tempora sit dolores, inventore in dolor mollitia magnam aut aspernatur esse architecto minus consequatur provident dolorem perferendis cumque vero ipsam!">
-            <label for="incomeAmount">Amount:</label>
-            <input type="number" id="incomeAmount" name="incomeAmount" required placeholder="99999$">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Micheal" required>
+        <form action="/add-income" method="post">
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required>
+    
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description" required>
+    
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" name="amount" required>
+    
+            <input type="hidden" id="name" name="name" value="<%= name %>">
             <button type="submit">Add Income</button>
-            
         </form>
     </div>
+    <script src="/app.js"></script>
 </body>
 </html>

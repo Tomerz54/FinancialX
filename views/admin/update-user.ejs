@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update User - Admin Panel</title>
+    <link rel="stylesheet" href="/styles/admin.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+        }
+        h1 {
+            text-align: center;
+            color: #ffffff;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        form label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        form input, form select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        form button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        form button:hover {
+            background-color: #0056b3;
+        }
+        .btn-back {
+            text-decoration: none;
+            margin-top: 10px;
+        }
+        .btn-back:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Update User Details</h1>
+    </header>
+    <div class="container">
+        <form action="/admin/update-user/<%= user._id %>?_method=PUT" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" value="<%= user.name %>" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="<%= user.email %>" required>
+
+            <label for="role">Role:</label>
+            <select id="role" name="role">
+                <option value="user" <%= user.role === 'user' ? 'selected' : '' %>>User</option>
+                <option value="admin" <%= user.role === 'admin' ? 'selected' : '' %>>Admin</option>
+            </select>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Leave blank to keep current">
+
+            <label for="income">Income:</label>
+            <input type="number" id="income" name="income" value="<%= totalIncome %>" required>
+
+            <label for="expenses">Expenses:</label>
+            <input type="number" id="expenses" name="expenses" value="<%= totalExpenses %>" required>
+
+            <button type="submit">Update User</button>
+            <a href="/admin/users" class="btn-back">Back to Users</a>
+        </form>
+    </div>
+</body>
+</html>

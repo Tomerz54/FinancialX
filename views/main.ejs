@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FinancialX</title>
+    <!-- remove styles when testing with chat gpt-->
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -200,6 +201,7 @@
         }
 
     </style>
+    <!--IMPORTANT-->
 </head>
 <body>
     <!-- Sidebar -->
@@ -209,7 +211,8 @@
             <ul>
                 <li><a href="/main">Home</a></li>
                 <li><a href="/services">Services</a></li>
-                <li><a href="/login">Login</a></li>
+                <li><a href="/logout">Logout</a></li>
+                <li><a href="/settings">Settings</a></li>
             </ul>
         </nav>
     </div>
@@ -231,71 +234,54 @@
         <section class="overview">
             <h2>Financial Overview</h2>
             <div class="summary-widgets">
-                <div class="widget">Account Balance: $10,000</div>
-                <div class="widget">Total Investments: $5,000</div>
+                <div class="widget">Account Balance: $<%= accountBalance.toFixed(2) %></div>
+                <div class="widget">Total Investments: $<%= totalInvestments.toFixed(2) %></div>
             </div>
         </section>
 
         <!-- Recent Transactions -->
-        <section class="transactions">
-            <h2>Recent Transactions</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Description</th>
-                        <th>Amount</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>01/01/2024</td>
-                        <td>Groceries</td>
-                        <td>$100</td>
-                    </tr>
-                    <!-- More transactions... -->
-                </tbody>
-            </table>
-        </section>
 
         <!-- Services Section -->
         <section class="services">
-            <h2>Buisness opprtunities</h2>
+            <h2>Business Opportunities</h2>
             <div class="service">
                 <h3>Service 1</h3>
                 <p>Description of service 1...</p>
+                <button class="add-button" id="businessButton">Check Out</button>
             </div>
             <!-- More services... -->
         </section>
 
-        <!-- News Section -->
         
+
 
         <!-- Expense Tracking Section -->
         <section class="expenses">
             <div class="section-header">
-                <h2>Expenses</h2>
+                <h2>Expenses Total: $<%= totalExpenses.toFixed(2) %></h2>
                 <button class="add-button" id="addExpenseButton">Add Expense</button>
             </div>
-            <div class="list-item">
-                <span>01/02/2024 - Rent</span>
-                <span>$1,200</span>
-            </div>
-            <!-- More expenses -->
+            <% expenses.forEach(expense => { %>
+                <div class="list-item">
+                    <span><%= expense.date.toDateString() %> - <%= expense.description %></span>
+                    <span>$<%= expense.amount %></span>
+                </div>
+            <% }) %>
         </section>
 
         <!-- Income Tracking Section -->
         <section class="income">
             <div class="section-header">
-                <h2>Income</h2>
+                <h2>Income Total: $<%= totalIncome.toFixed(2) %></h2>
                 <button class="add-button" id="addIncomeButton">Add Income</button>
             </div>
-            <div class="list-item">
-                <span>01/03/2024 - Salary</span>
-                <span>$3,000</span>
-            </div>
+            <% incomes.forEach(income => { %>
+                <div class="list-item">
+                    <span><%= income.date.toDateString() %> - <%= income.description %></span>
+                    <span>$<%= income.amount %></span>
+                </div>
+            <% }) %>
         </section>
-    </div>
 
     
 </body>
@@ -308,7 +294,7 @@
             // Get the buttons by their IDs
             const addExpenseButton = document.getElementById('addExpenseButton');
             const addIncomeButton = document.getElementById('addIncomeButton');
-
+            const businessButton = document.getElementById('businessButton')
             // Add click event listeners to the buttons
             addExpenseButton.addEventListener('click', () => {
                 window.location.href = '/add-expenses';
@@ -317,6 +303,10 @@
             addIncomeButton.addEventListener('click', () => {
                 window.location.href = '/add-income';
             });
+            businessButton.addEventListener('click', () => {
+                window.location.href = '/business';
+            });
         });
 </script>
+
 </html>
