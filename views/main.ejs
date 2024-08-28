@@ -482,7 +482,8 @@
 
     createChart(document.body.classList.contains('dark-theme'));
     updateCryptoData(); // Initial update
-    setInterval(updateCryptoData, 3000000); // Update every 1 minute
+    setInterval(updateCryptoData, 3000000); // Update every 30 minutes
+    //**dont make it too often, it will end the amount of requests you can make to the api**
 
     // Update chart when theme changes
     document.querySelector('.theme-toggle').addEventListener('click', function() {

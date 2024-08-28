@@ -412,7 +412,7 @@ app.post('/main', async (req, res) => {
 
 //cryptocurrency page
 app.get('/api/crypto-data', async (req, res) => {
-  const API_KEY = '95A17BB6-ACE2-4A84-9FF7-CD34924AF213'; // Market Data API key
+  const API_KEY = process.env.API_KEY; // Market Data API key
   const cryptos = ['BTC', 'ETH', 'LTC', 'XRP', 'ADA']; // List of cryptocurrencies to fetch
 
   try {
