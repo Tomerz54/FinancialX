@@ -12,6 +12,9 @@ const MongoStore = require('connect-mongo');
 const bodyParser = require('body-parser')
 const validator = require('validator');
 const methodOverride = require('method-override');
+const fetch = require('node-fetch');
+const NodeCache = require('node-cache');
+const dataCache = new NodeCache({ stdTTL: 300 }); // Cache for 5 minutes
 
  // Ensure this matches your database name
  // Set up MongoDB connection
@@ -408,8 +411,36 @@ app.post('/main', async (req, res) => {
 });
 
 //cryptocurrency page
-app.get('/business', (req,res) => {
-  res.render('business');
+app.get('/api/crypto-data', async (req, res) => {
+  const API_KEY = '95A17BB6-ACE2-4A84-9FF7-CD34924AF213'; // Market Data API key
+  const cryptos = ['BTC', 'ETH', 'LTC', 'XRP', 'ADA']; // List of cryptocurrencies to fetch
+
+  try {
+    console.log('Fetching crypto data...');
+    
+    const response = await fetch(`https://rest.coinapi.io/v1/exchangerate/USD?filter_asset_id=${cryptos.join(',')}`, {
+      headers: { 'X-CoinAPI-Key': API_KEY }
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    const formattedData = {
+      rates: data.rates.map(rate => ({
+        asset_id_base: rate.asset_id_base,
+        rate: rate.rate // Use the rate as is, don't invert it
+      }))
+    };
+
+    console.log('Received data:', formattedData);
+    res.json(formattedData);
+  } catch (error) {
+    console.error('Detailed error:', error);
+    res.status(500).json({ error: error.message });
+  }
 });
 
 

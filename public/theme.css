@@ -1,0 +1,49 @@
+:root {
+    --bg-color: #f4f4f9;
+    --text-color: #333;
+    --container-bg: white;
+    --input-bg: white;
+    --input-border: #ddd;
+    --button-bg: #007bff;
+    --button-text: white;
+    --header-bg: #333;
+    --header-text: #fff;
+}
+
+.dark-theme {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --container-bg: #2c2c2c;
+    --input-bg: #333;
+    --input-border: #555;
+    --button-bg: #4fc3f7;
+    --button-text: #121212;
+    --header-bg: #1a237e;
+    --header-text: #fff;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.container, form {
+    background: var(--container-bg);
+}
+
+input, select {
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    border-color: var(--input-border);
+}
+
+button, .theme-toggle {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+}
+
+header {
+    background-color: var(--header-bg);
+    color: var(--header-text);
+}
