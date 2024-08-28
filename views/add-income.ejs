@@ -11,6 +11,12 @@
             padding: 20px;
             background-color: #f4f4f9;
             color: #333;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.dark-theme {
+            background-color: #121212;
+            color: #e0e0e0;
         }
 
         .container {
@@ -20,6 +26,10 @@
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark-theme .container {
+            background: #2c2c2c;
         }
 
         h2 {
@@ -43,6 +53,12 @@
             border-radius: 5px;
         }
 
+        .dark-theme input[type="text"], .dark-theme input[type="number"], .dark-theme input[type="date"] {
+            background-color: #333;
+            color: #e0e0e0;
+            border-color: #555;
+        }
+
         button {
             background-color: #007bff;
             color: white;
@@ -57,9 +73,27 @@
         button:hover {
             background-color: #0056b3;
         }
+
+        .theme-toggle {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            margin-bottom: 20px;
+        }
+
+        .dark-theme .theme-toggle {
+            background-color: #4fc3f7;
+            color: #121212;
+        }
     </style>
 </head>
 <body>
+    <button class="theme-toggle">Toggle Theme</button>
     <div class="container">
         <h2>Add Income</h2>
         <form action="/add-income" method="post">
@@ -77,5 +111,10 @@
         </form>
     </div>
     <script src="/app.js"></script>
+    <script>
+        document.querySelector('.theme-toggle').addEventListener('click', function() {
+            document.body.classList.toggle('dark-theme');
+        });
+    </script>
 </body>
 </html>
