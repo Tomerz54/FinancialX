@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Your Email</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        p {
+            color: #666;
+            line-height: 1.6;
+        }
+        .message {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+        .resend-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #1976d2;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid #1976d2;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .resend-link:hover {
+            background-color: #1976d2;
+            color: white;
+        }
+        .email-icon {
+            font-size: 3rem;
+            color: #1976d2;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="email-icon">✉️</div>
+        <h1>Verify Your Email</h1>
+        <% if (locals.message) { %>
+            <div class="message"><%= message %></div>
+        <% } %>
+        <p>Hello <%= name %>,</p>
+        <p>We've sent a verification link to your email address: <strong><%= email %></strong></p>
+        <p>Please check your inbox and click the link to complete your registration.</p>
+        <p>If you don't see the email, please check your spam folder.</p>
+        <a href="/resend-verification?email=<%= encodeURIComponent(email) %>" class="resend-link">Resend Verification Email</a>
+    </div>
+</body>
+</html>

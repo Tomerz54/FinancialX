@@ -28,10 +28,17 @@
                 <p id="strength-text">Very Weak</p>
             </div>
 
-            <!-- Error message display -->
-            <% if (typeof error !== 'undefined') { %>
-                <div class="error-message"><%= error %></div>
-            <% } %>
+            <% if (typeof error !== 'undefined' && error) { %>
+                <div class="alert alert-danger">
+                  <%= error %>
+                </div>
+              <% } %>
+              
+              <% if (typeof message !== 'undefined' && message) { %>
+                <div class="alert alert-success" style="color: green; background-color: #e8f5e9; padding: 10px; border: 1px solid #c8e6c9; border-radius: 4px;">
+                  <%= message %>
+                </div>
+              <% } %>
 
             <div class="links">
                 <a id="forgot-password" href="/forgot-password">Forgot Password?</a>

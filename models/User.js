@@ -1,5 +1,6 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+import mongoose from 'mongoose';
+const { Schema } = mongoose;
+import bcrypt from 'bcrypt';
 
 const incomeSchema = new Schema({
   date: { type: Date, required: true },
@@ -13,7 +14,7 @@ const expenseSchema = new Schema({
   amount: { type: Number, required: true },
 });
 
-const userSchema = new mongoose.Schema({
+const userSchema = new Schema({
   email: { type: String, required: true },
   name: { type: String, required: true },
   password: { type: String, required: true },
@@ -24,14 +25,25 @@ const userSchema = new mongoose.Schema({
     user: { type: String, required: false },
     pass: { type: String, required: false }
   },
+  verificationToken: String,
+  isVerified: { type: Boolean, default: false },
   income: [incomeSchema],
   expenses: [expenseSchema],
-  resetToken: { type: String },
-  resetTokenExpires: { type: Date } // Add this field to track expiration
-
+  resetPasswordToken: String,
+  resetPasswordExpires: Date
 });
 
-
+userSchema.pre('save', async function(next) {
+  if (!this.isModified('password')) return next();
+  
+  try {
+    const salt = await bcrypt.genSalt(10);
+    this.password = await bcrypt.hash(this.password, salt);
+    next();
+  } catch (error) {
+    next(error);
+  }
+});
 const User = mongoose.model('User', userSchema);
 
-module.exports = User;
+export default User;

@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FinancialX</title>
-    <!-- remove styles when testing with chat gpt-->
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -292,7 +291,7 @@
         <nav>
             <ul>
                 <li><a href="/main">Home</a></li>
-                <li><a href="/services">Services</a></li>
+                <li><a href="/about">About</a></li>
                 <li><a href="/logout">Logout</a></li>
                 <li><a href="/settings">Settings</a></li>
                 <li><button class="theme-toggle">Toggle Theme</button></li>
@@ -318,7 +317,7 @@
             <h2>Financial Overview</h2>
             <div class="summary-widgets">
                 <div class="widget">Account Balance: $<%= accountBalance.toFixed(2) %></div>
-                <div class="widget">Total Investments: $<%= totalInvestments.toFixed(2) %></div>
+                
             </div>
         </section>
 
